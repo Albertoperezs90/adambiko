@@ -1,10 +1,11 @@
 package com.aperezs.adambiko.view.main
 
-import com.aperezs.adambiko.di.component.DaggerActivityComponent
-import com.aperezs.adambiko.view.MainActivity
+import com.aperezs.adambiko.di.AdambikoApplication
+import com.aperezs.adambiko.di.module.ViewModelModule
 
 fun MainActivity.injectDependencies() {
-    DaggerActivityComponent.builder()
+    (application as AdambikoApplication).applicationComponent.activityComponent()
+        .viewModelModule(ViewModelModule())
         .build()
         .inject(this)
 }

@@ -1,12 +1,21 @@
 package com.aperezs.adambiko.di.component
 
+import com.aperezs.adambiko.di.annotation.ActivityScope
 import com.aperezs.adambiko.di.module.ViewModelModule
-import com.aperezs.adambiko.view.MainActivity
-import dagger.Component
+import com.aperezs.adambiko.view.main.MainActivity
+import dagger.Subcomponent
 
-@Component(modules = [ViewModelModule::class])
+@ActivityScope
+@Subcomponent(modules = [ViewModelModule::class])
 interface ActivityComponent {
 
     fun inject(mainActivity: MainActivity)
 
+    @Subcomponent.Builder
+    interface Builder {
+
+        fun viewModelModule(viewModelModule: ViewModelModule): Builder
+        fun build(): ActivityComponent
+
+    }
 }

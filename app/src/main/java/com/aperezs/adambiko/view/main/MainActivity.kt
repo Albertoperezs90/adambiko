@@ -1,4 +1,4 @@
-package com.aperezs.adambiko.view
+package com.aperezs.adambiko.view.main
 
 import com.aperezs.adambiko.R
 import com.aperezs.adambiko.databinding.ActivityMainBinding
