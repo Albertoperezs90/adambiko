@@ -3,7 +3,6 @@ package com.aperezs.adambiko.view
 import com.aperezs.adambiko.R
 import com.aperezs.adambiko.databinding.ActivityMainBinding
 import com.aperezs.adambiko.view.base.BaseActivity
-import com.aperezs.adambiko.view.main.inject
 import com.aperezs.adambiko.view.main.injectDependencies
 import com.aperezs.adambiko.viewmodel.MainViewModel
 import javax.inject.Inject
