@@ -13,6 +13,7 @@ class EntriesFragment : BaseFragment<EntriesFragmentBinding>(R.layout.entries_fr
     override fun initialize() {
         injectDependencies()
         entriesViewModel = ViewModelProviders.of(requireActivity(), viewModelProvider)[EntriesViewModel::class.java]
+        binding.viewModel = entriesViewModel
     }
 
 }
