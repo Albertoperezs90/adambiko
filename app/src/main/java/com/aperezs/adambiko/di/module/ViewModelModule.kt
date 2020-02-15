@@ -2,8 +2,8 @@ package com.aperezs.adambiko.di.module
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.aperezs.adambiko.di.annotation.ViewModelKey
 import com.aperezs.adambiko.common.viewmodel.ViewModelFactory
+import com.aperezs.adambiko.di.annotation.ViewModelKey
 import com.aperezs.adambiko.operations.entries.EntriesViewModel
 import dagger.Module
 import dagger.Provides
