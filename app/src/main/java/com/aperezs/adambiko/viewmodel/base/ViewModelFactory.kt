@@ -1,4 +1,4 @@
-package com.aperezs.adambiko.viewmodel.factory
+package com.aperezs.adambiko.viewmodel.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
