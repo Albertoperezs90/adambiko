@@ -43,7 +43,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/headerGuideline"
-            binding:data="@{viewModel.listData}"
+            binding:data="@{viewModel.entriesUI}"
             binding:itemCount="5"
             binding:listitem="@layout/entries_item"
             binding:viewmodel="@{viewModel}" />

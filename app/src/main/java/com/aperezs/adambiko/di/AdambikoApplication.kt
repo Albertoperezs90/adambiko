@@ -7,7 +7,8 @@ import com.aperezs.adambiko.di.component.DaggerApplicationComponent
 class AdambikoApplication : Application() {
 
     val applicationComponent: ApplicationComponent by lazy {
-        DaggerApplicationComponent.builder().build()
+        DaggerApplicationComponent.builder()
+            .build()
     }
 
 }

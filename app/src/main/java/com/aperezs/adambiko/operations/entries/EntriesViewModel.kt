@@ -1,20 +1,16 @@
 package com.aperezs.adambiko.operations.entries
 
-import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.aperezs.adambiko.common.base.BaseViewModel
+import com.aperezs.adambiko.operations.entries.model.EntryUI
 import javax.inject.Inject
 
 class EntriesViewModel @Inject constructor() : BaseViewModel() {
 
-    var data = "data"
+    private val _entriesUI = MutableLiveData<List<EntryUI>>()
+    val entriesUI: LiveData<List<EntryUI>>
+        get() = _entriesUI
 
-    var listData = MutableLiveData<List<String>>().also {
-        it.value = listOf("Item uno", "Item dos", "Item tres", "Item cuatro", "Item cinco", "Item seis", "Item siete", "Item ocho")
-    }
-
-    fun printData() {
-        Log.i("**DEBUGGABLE**", data)
-    }
 
 }

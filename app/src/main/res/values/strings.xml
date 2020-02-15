@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">AdamBiko</string>
+
+    <string-array name="entry_description">
+        <item>This is a description for adam biko app</item>
+        <item>This app has been develop by @albertoperezs90</item>
+        <item>Awesome app!</item>
+        <item>I\'m going to give 5 stars!</item>
+        <item>Hope you like it as much I do!</item>
+    </string-array>
+
 </resources>
