@@ -2,7 +2,7 @@ package com.aperezs.adambiko.di.component
 
 import com.aperezs.adambiko.di.annotation.ActivityScope
 import com.aperezs.adambiko.di.module.ViewModelModule
-import com.aperezs.adambiko.view.entries.EntriesActivity
+import com.aperezs.adambiko.operations.entries.EntriesActivity
 import dagger.Subcomponent
 
 @ActivityScope

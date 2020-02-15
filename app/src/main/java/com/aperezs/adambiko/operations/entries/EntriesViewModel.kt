@@ -1,8 +1,8 @@
-package com.aperezs.adambiko.viewmodel.entries
+package com.aperezs.adambiko.operations.entries
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.aperezs.adambiko.viewmodel.base.BaseViewModel
+import com.aperezs.adambiko.common.base.BaseViewModel
 import javax.inject.Inject
 
 class EntriesViewModel @Inject constructor() : BaseViewModel() {

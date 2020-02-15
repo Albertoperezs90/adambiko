@@ -1,9 +1,9 @@
-package com.aperezs.adambiko.view.entries
+package com.aperezs.adambiko.operations.entries
 
 import com.aperezs.adambiko.R
 import com.aperezs.adambiko.databinding.EntriesActivityBinding
-import com.aperezs.adambiko.view.base.BaseActivity
-import com.aperezs.adambiko.view.base.addFragment
+import com.aperezs.adambiko.common.base.BaseActivity
+import com.aperezs.adambiko.common.extensions.addFragment
 
 class EntriesActivity : BaseActivity<EntriesActivityBinding>(R.layout.entries_activity) {
 

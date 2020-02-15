@@ -1,7 +1,7 @@
-package com.aperezs.adambiko.view.base
+package com.aperezs.adambiko.common.adapter
 
 import androidx.recyclerview.widget.RecyclerView
-import com.aperezs.adambiko.viewmodel.base.BaseViewModel
+import com.aperezs.adambiko.common.base.BaseViewModel
 
 abstract class CommonAdapter<VH : RecyclerView.ViewHolder, VM : BaseViewModel, T> : RecyclerView.Adapter<VH>() {
 

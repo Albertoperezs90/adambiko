@@ -1,6 +1,6 @@
 package com.aperezs.adambiko.di.component
 
-import com.aperezs.adambiko.view.entries.EntriesFragment
+import com.aperezs.adambiko.operations.entries.EntriesFragment
 import dagger.Subcomponent
 
 @Subcomponent

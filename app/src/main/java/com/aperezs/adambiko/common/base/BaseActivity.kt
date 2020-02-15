@@ -1,4 +1,4 @@
-package com.aperezs.adambiko.view.base
+package com.aperezs.adambiko.common.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

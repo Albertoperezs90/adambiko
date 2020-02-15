@@ -1,7 +1,7 @@
-package com.aperezs.adambiko.view.entries
+package com.aperezs.adambiko.operations.entries
 
-import com.aperezs.adambiko.view.base.BaseActivity
-import com.aperezs.adambiko.view.base.BaseFragment
+import com.aperezs.adambiko.common.base.BaseActivity
+import com.aperezs.adambiko.common.base.BaseFragment
 
 fun EntriesActivity.injectDependencies() {
     (this as BaseActivity<*>).activityComponent.inject(this)

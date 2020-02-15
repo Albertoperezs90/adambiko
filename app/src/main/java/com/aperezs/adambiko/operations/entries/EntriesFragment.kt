@@ -1,10 +1,9 @@
-package com.aperezs.adambiko.view.entries
+package com.aperezs.adambiko.operations.entries
 
 import androidx.lifecycle.ViewModelProviders
 import com.aperezs.adambiko.R
 import com.aperezs.adambiko.databinding.EntriesFragmentBinding
-import com.aperezs.adambiko.view.base.BaseFragment
-import com.aperezs.adambiko.viewmodel.entries.EntriesViewModel
+import com.aperezs.adambiko.common.base.BaseFragment
 
 class EntriesFragment : BaseFragment<EntriesFragmentBinding>(R.layout.entries_fragment) {
 

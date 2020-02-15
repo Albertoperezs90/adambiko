@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.aperezs.adambiko.viewmodel.entries.EntriesViewModel" />
+            type="com.aperezs.adambiko.operations.entries.EntriesViewModel" />
 
     </data>
 

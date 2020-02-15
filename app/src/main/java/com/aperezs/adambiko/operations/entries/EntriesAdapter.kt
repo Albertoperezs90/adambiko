@@ -1,11 +1,10 @@
-package com.aperezs.adambiko.view.entries
+package com.aperezs.adambiko.operations.entries
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.aperezs.adambiko.databinding.EntriesItemBinding
-import com.aperezs.adambiko.view.base.CommonAdapter
-import com.aperezs.adambiko.viewmodel.entries.EntriesViewModel
+import com.aperezs.adambiko.common.adapter.CommonAdapter
 
 class EntriesAdapter : CommonAdapter<EntriesAdapter.ViewHolder, EntriesViewModel, String>() {
 
