@@ -19,7 +19,7 @@ class EntriesFragment : BaseFragment<EntriesFragmentBinding>(R.layout.entries_fr
         binding.viewModel = entriesViewModel
         binding.entriesRecyclerView.adapter = adapter
 
-
+        entriesViewModel.loadInitialData()
     }
 
 }

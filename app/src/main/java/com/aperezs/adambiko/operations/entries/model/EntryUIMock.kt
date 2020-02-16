@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 class EntryUIMock @Inject constructor(private val resources: Resources) {
 
-    fun generate(quantity: Int): List<EntryUI> {
+    fun generateList(quantity: Int): List<EntryUI> {
         val entries = mutableListOf<EntryUI>()
         repeat(quantity) {
             entries.add(
@@ -26,6 +26,18 @@ class EntryUIMock @Inject constructor(private val resources: Resources) {
             )
         }
         return entries
+    }
+
+    fun generate(): EntryUI {
+        return EntryUI(
+            avatar = getRandomImage(),
+            quantity = randomInteger(10, 99).toString(),
+            amount = randomDouble(200.0, 500.0).toString().formatDecimalWith("000.00"),
+            description = getRandomStringFromArrayResources(resources, R.array.entry_description).orEmpty(),
+            firstValue = randomDouble(20.0, 40.0).toString().formatDecimalWith(),
+            secondValue = randomDouble(30.0, 55.0).toString().formatDecimalWith(),
+            thirdValue = randomDouble(75.0, 89.0).toString().formatDecimalWith()
+        )
     }
 
     private fun getRandomImage(): Int {

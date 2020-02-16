@@ -10,8 +10,8 @@
             type="com.aperezs.adambiko.operations.entries.EntriesViewModel" />
 
         <variable
-            name="item"
-            type="String" />
+            name="entry"
+            type="com.aperezs.adambiko.operations.entries.model.EntryUI" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -40,7 +40,7 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{item}"
+                android:text="@{entry.description}"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView3"

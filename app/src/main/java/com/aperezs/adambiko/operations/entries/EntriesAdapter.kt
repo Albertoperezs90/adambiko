@@ -5,12 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.aperezs.adambiko.common.adapter.CommonAdapter
 import com.aperezs.adambiko.databinding.EntriesItemBinding
+import com.aperezs.adambiko.operations.entries.model.EntryUI
 
-class EntriesAdapter : CommonAdapter<EntriesAdapter.ViewHolder, EntriesViewModel, String>() {
+class EntriesAdapter : CommonAdapter<EntriesAdapter.ViewHolder, EntriesViewModel, EntryUI>() {
 
-    private var data: List<String> = emptyList()
+    private var data: List<EntryUI> = emptyList()
 
-    override fun setData(data: List<String>) {
+    override fun setData(data: List<EntryUI>) {
         this.data = data
         notifyDataSetChanged()
     }
@@ -30,9 +31,9 @@ class EntriesAdapter : CommonAdapter<EntriesAdapter.ViewHolder, EntriesViewModel
 
     inner class ViewHolder(private val binding: EntriesItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: String) {
+        fun bind(item: EntryUI) {
             binding.viewModel = viewModel
-            binding.item = item
+            binding.entry = item
             binding.executePendingBindings()
         }
     }

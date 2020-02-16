@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.aperezs.adambiko.common.viewmodel.ViewModelFactory
 import com.aperezs.adambiko.di.annotation.ViewModelKey
 import com.aperezs.adambiko.operations.entries.EntriesViewModel
+import com.aperezs.adambiko.operations.entries.model.EntryUIMock
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
@@ -20,8 +21,8 @@ class ViewModelModule {
     @Provides
     @IntoMap
     @ViewModelKey(EntriesViewModel::class)
-    fun provideMainViewModel(): ViewModel {
-        return EntriesViewModel()
+    fun provideMainViewModel(entryUIMock: EntryUIMock): ViewModel {
+        return EntriesViewModel(entryUIMock)
     }
 
 }
