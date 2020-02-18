@@ -21,4 +21,9 @@ class EntriesViewModel @Inject constructor(private val entryUIMock: EntryUIMock)
     fun addNewEntry() {
         _entriesUI.value = _entriesUI.value?.plus(entryUIMock.generate())
     }
+
+    fun removeEntries(): Boolean {
+        _entriesUI.value = emptyList()
+        return true
+    }
 }
