@@ -1,7 +1,6 @@
 package com.aperezs.adambiko.operations.entries.model
 
 import android.content.res.Resources
-import android.graphics.drawable.Drawable
 import com.aperezs.adambiko.R
 import com.aperezs.adambiko.utils.random.randomDouble
 import com.aperezs.adambiko.utils.random.randomInteger
@@ -41,9 +40,9 @@ class EntryUIMock @Inject constructor(private val resources: Resources) {
         )
     }
 
-    private fun getRandomImage(): Drawable? {
+    private fun getRandomImage(): Int {
         val drawables = arrayOf(R.drawable.ic_boy_young, R.drawable.ic_boy_man, R.drawable.ic_girl_ancient, R.drawable.ic_girl_brown, R.drawable.ic_girl_red)
-        return resources.getDrawable(drawables.random(), null)
+        return drawables.random()
     }
 
 

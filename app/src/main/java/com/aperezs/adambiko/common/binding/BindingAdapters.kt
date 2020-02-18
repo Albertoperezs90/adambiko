@@ -1,6 +1,6 @@
 package com.aperezs.adambiko.common.binding
 
-import android.view.View
+import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.aperezs.adambiko.common.adapter.CommonAdapter
@@ -24,14 +24,10 @@ object BindingAdapters {
         data?.let { adapter?.setData(it) }
     }
 
-
     @JvmStatic
-    @BindingAdapter("binding:onLongClick")
-    fun setOnLongClick(view: View, function: Runnable) {
-        view.setOnLongClickListener {
-            function.run()
-            true
-        }
+    @BindingAdapter("binding:drawableResource")
+    fun setDrawableResource(imageView: ImageView, drawableRes: Int) {
+        imageView.setImageDrawable(imageView.resources.getDrawable(drawableRes, null))
     }
 
 }

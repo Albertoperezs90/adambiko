@@ -12,6 +12,7 @@
         <variable
             name="entry"
             type="com.aperezs.adambiko.operations.entries.model.EntryUI" />
+
     </data>
 
     <androidx.cardview.widget.CardView
@@ -32,7 +33,7 @@
                 android:layout_width="0dp"
                 android:layout_height="@dimen/entry_height"
                 android:scaleType="fitXY"
-                android:src="@{entry.avatar}"
+                android:onClick="@{() -> viewModel.openOnFullScreen(entry.avatar)}"
                 app:layout_constraintEnd_toStartOf="@+id/quantityTextView"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_weight="1"

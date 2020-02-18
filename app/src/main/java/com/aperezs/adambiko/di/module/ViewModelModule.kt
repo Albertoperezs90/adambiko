@@ -6,6 +6,7 @@ import com.aperezs.adambiko.common.viewmodel.ViewModelFactory
 import com.aperezs.adambiko.di.annotation.ViewModelKey
 import com.aperezs.adambiko.operations.entries.EntriesViewModel
 import com.aperezs.adambiko.operations.entries.model.EntryUIMock
+import com.aperezs.adambiko.operations.fullscren.FullScreenViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
@@ -23,6 +24,14 @@ class ViewModelModule {
     @ViewModelKey(EntriesViewModel::class)
     fun provideMainViewModel(entryUIMock: EntryUIMock): ViewModel {
         return EntriesViewModel(entryUIMock)
+    }
+
+
+    @Provides
+    @IntoMap
+    @ViewModelKey(FullScreenViewModel::class)
+    fun provideFullScreenViewModel(): ViewModel {
+        return FullScreenViewModel()
     }
 
 }

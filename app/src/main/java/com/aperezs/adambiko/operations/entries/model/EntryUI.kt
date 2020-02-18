@@ -1,9 +1,7 @@
 package com.aperezs.adambiko.operations.entries.model
 
-import android.graphics.drawable.Drawable
-
 data class EntryUI(
-    val avatar: Drawable?,
+    val avatar: Int,
     val quantity: String,
     val amount: String,
     val description: String,

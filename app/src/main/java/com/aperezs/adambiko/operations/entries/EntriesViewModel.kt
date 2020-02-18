@@ -7,12 +7,17 @@ import com.aperezs.adambiko.operations.entries.model.EntryUI
 import com.aperezs.adambiko.operations.entries.model.EntryUIMock
 import javax.inject.Inject
 
-class EntriesViewModel @Inject constructor(private val entryUIMock: EntryUIMock) : BaseViewModel() {
+class EntriesViewModel @Inject constructor(
+    private val entryUIMock: EntryUIMock
+) : BaseViewModel() {
 
     private val _entriesUI = MutableLiveData<List<EntryUI>>()
     val entriesUI: LiveData<List<EntryUI>>
         get() = _entriesUI
 
+    private val _onNavigation = MutableLiveData<EntriesNavigation>()
+    val onNavigation: LiveData<EntriesNavigation>
+        get() = _onNavigation
 
     fun loadInitialData() {
         _entriesUI.value = entryUIMock.generateList(2)
@@ -25,5 +30,10 @@ class EntriesViewModel @Inject constructor(private val entryUIMock: EntryUIMock)
     fun removeEntries(): Boolean {
         _entriesUI.value = emptyList()
         return true
+    }
+
+    fun openOnFullScreen(drawableResource: Int) {
+        _onNavigation.value = EntriesNavigation.FullScreen(drawableResource)
+
     }
 }

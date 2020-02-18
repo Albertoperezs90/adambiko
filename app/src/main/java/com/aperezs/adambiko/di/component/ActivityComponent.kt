@@ -10,6 +10,7 @@ import dagger.Subcomponent
 interface ActivityComponent {
 
     fun fragmentComponentBuilder(): FragmentComponent.Builder
+    fun fragmentDialogBuilder(): FragmentDialogComponent.Builder
     fun inject(entriesActivity: EntriesActivity)
 
     @Subcomponent.Builder

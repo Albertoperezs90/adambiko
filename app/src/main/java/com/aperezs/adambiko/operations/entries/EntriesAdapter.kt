@@ -34,6 +34,7 @@ class EntriesAdapter : CommonAdapter<EntriesAdapter.ViewHolder, EntriesViewModel
         fun bind(item: EntryUI) {
             binding.viewModel = viewModel
             binding.entry = item
+            binding.avatarImageView.setImageDrawable(this.itemView.resources.getDrawable(item.avatar, null))
             binding.executePendingBindings()
         }
     }

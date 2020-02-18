@@ -3,4 +3,6 @@
     <dimen name="entry_height">80dp</dimen>
     <dimen name="entry_width">80dp</dimen>
 
+    <dimen name="avatar_fullscreen_height">350dp</dimen>
+    <dimen name="avatar_fullscreen_width">350dp</dimen>
 </resources>
