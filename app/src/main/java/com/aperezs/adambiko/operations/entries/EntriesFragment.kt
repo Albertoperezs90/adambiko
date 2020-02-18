@@ -1,6 +1,5 @@
 package com.aperezs.adambiko.operations.entries
 
-import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
 import com.aperezs.adambiko.R
 import com.aperezs.adambiko.common.base.BaseFragment

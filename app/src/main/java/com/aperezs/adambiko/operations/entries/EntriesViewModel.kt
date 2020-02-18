@@ -15,6 +15,10 @@ class EntriesViewModel @Inject constructor(private val entryUIMock: EntryUIMock)
 
 
     fun loadInitialData() {
-        _entriesUI.value = entryUIMock.generateList(5)
+        _entriesUI.value = entryUIMock.generateList(2)
+    }
+
+    fun addNewEntry() {
+        _entriesUI.value = _entriesUI.value?.plus(entryUIMock.generate())
     }
 }

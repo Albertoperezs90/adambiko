@@ -28,6 +28,7 @@
             android:layout_height="0dp"
             android:scaleType="centerCrop"
             android:src="@drawable/map_mock"
+            android:onClick="@{() -> viewModel.addNewEntry()}"
             app:layout_constraintBottom_toTopOf="@+id/headerGuideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
