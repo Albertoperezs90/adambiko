@@ -1,7 +1,7 @@
 package com.aperezs.adambiko.operations.entries.model
 
 import android.content.res.Resources
-import com.aperezs.adambiko.R
+import android.graphics.drawable.Drawable
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
@@ -13,12 +13,14 @@ import org.junit.Test
 class EntryUIMockTest {
 
     private val resources: Resources = mock()
+    private val drawable: Drawable = mock()
 
     private val entryUIMock = EntryUIMock(resources)
 
     @Before
     fun setUp() {
         whenever(resources.getStringArray(any())).thenReturn(generateArrayString())
+        whenever(resources.getDrawable(any(), any())).thenReturn(drawable)
     }
 
     @Test
@@ -54,14 +56,6 @@ class EntryUIMockTest {
         val result = entryUIMock.generateList(-1)
 
         assertTrue(result.isEmpty())
-    }
-
-    @Test
-    fun `Generate List should generate entries with avatar founded into drawables`() {
-        val result = entryUIMock.generateList(200)
-
-        val expectedDrawables = arrayOf(R.drawable.ic_boy_young, R.drawable.ic_boy_man, R.drawable.ic_girl_ancient, R.drawable.ic_girl_brown, R.drawable.ic_girl_red)
-        assertTrue(result.all { entry -> expectedDrawables.any { it == entry.avatar } })
     }
 
     @Test
