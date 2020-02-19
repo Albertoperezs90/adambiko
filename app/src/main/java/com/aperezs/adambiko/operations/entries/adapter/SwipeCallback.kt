@@ -18,7 +18,7 @@ class SwipeCallback(
     }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-        if (direction == ItemTouchHelper.RIGHT) onDelete(viewHolder.adapterPosition) else onRead(viewHolder.adapterPosition)
+        if (direction == ItemTouchHelper.RIGHT) onRead(viewHolder.adapterPosition) else onDelete(viewHolder.adapterPosition)
     }
 
     override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
@@ -33,12 +33,12 @@ class SwipeCallback(
         val deletedBackground = (viewHolder as EntriesAdapter.ViewHolder).binding.viewDeleteBackground
         val readedBackground = (viewHolder).binding.viewReadBackground
 
-        if (isSwipingToRight(dX) && readedBackground.visibility == VISIBLE) {
-            deletedBackground.visibility = VISIBLE
-            readedBackground.visibility = INVISIBLE
-        } else if (isSwipingToLeft(dX) && deletedBackground.visibility == VISIBLE) {
+        if (isSwipingToRight(dX) && deletedBackground.visibility == VISIBLE) {
             deletedBackground.visibility = INVISIBLE
             readedBackground.visibility = VISIBLE
+        } else if (isSwipingToLeft(dX) && readedBackground.visibility == VISIBLE) {
+            deletedBackground.visibility = VISIBLE
+            readedBackground.visibility = INVISIBLE
         }
 
         ItemTouchHelper.Callback.getDefaultUIUtil().onDraw(c, recyclerView, getForegroundView(viewHolder), dX, dY, actionState, isCurrentlyActive)
