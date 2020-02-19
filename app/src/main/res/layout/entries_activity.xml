@@ -8,6 +8,5 @@
         tools:context=".operations.entries.EntriesActivity">
 
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
