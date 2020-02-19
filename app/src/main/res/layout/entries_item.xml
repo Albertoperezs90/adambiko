@@ -23,121 +23,189 @@
         app:cardCornerRadius="8dp"
         app:cardUseCompatPadding="false">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="2dp">
+            android:layout_height="wrap_content">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/avatarImageView"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/entry_height"
-                android:scaleType="fitXY"
-                android:onClick="@{() -> viewModel.openOnFullScreen(entry.avatar)}"
-                app:layout_constraintEnd_toStartOf="@+id/quantityTextView"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintHorizontal_weight="1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/ic_boy_young" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/quantityTextView"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:gravity="center"
-                android:text="@{`Qta: ` + entry.quantity}"
-                android:theme="@style/Entry.Main.TextView"
-                app:layout_constraintBottom_toBottomOf="@+id/avatarImageView"
-                app:layout_constraintEnd_toStartOf="@+id/amountTextView"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintHorizontal_weight="2"
-                app:layout_constraintStart_toEndOf="@+id/avatarImageView"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Qta: 43" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/amountTextView"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:gravity="center"
-                android:text="@{`$` + entry.amount}"
-                android:theme="@style/Entry.Main.TextView"
-                app:layout_constraintBottom_toBottomOf="@+id/avatarImageView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintHorizontal_weight="2"
-                app:layout_constraintStart_toEndOf="@+id/quantityTextView"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="$400.43" />
-
-            <View
-                android:id="@+id/separator"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="2dp"
-                android:background="@color/colorPrimary"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/avatarImageView" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/descriptionTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginEnd="2dp"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="@{`Description: ` + entry.description}"
-                android:theme="@style/Entry.Secondary.TextView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/separator"
-                tools:text="Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/firstValueTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="4dp"
-                android:text="@{`Val1: ` + entry.firstValue}"
-                android:theme="@style/Entry.Secondary.TextView"
-                app:layout_constraintEnd_toStartOf="@+id/secondValueTextView"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/viewDeleteBackground"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorRed"
+                app:layout_constraintBottom_toTopOf="@+id/viewReadBackground"
+                app:layout_constraintEnd_toStartOf="@+id/viewReadBackground"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descriptionTextView"
-                tools:text="Val1: $342.12" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/secondValueTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@{`Val2: ` + entry.secondValue}"
-                android:theme="@style/Entry.Secondary.TextView"
-                app:layout_constraintEnd_toStartOf="@+id/thirdValueTextView"
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/entry_height"
+                    android:layout_marginStart="24dp"
+                    android:src="@drawable/ic_trash"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/viewReadBackground"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"
+                app:layout_constraintBottom_toTopOf="@+id/viewForeground"
+                app:layout_constraintEnd_toStartOf="@+id/viewForeground"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/firstValueTextView"
-                app:layout_constraintTop_toBottomOf="@+id/descriptionTextView"
-                tools:text="Val2: 123.12%" />
+                app:layout_constraintStart_toEndOf="@+id/viewDeleteBackground"
+                app:layout_constraintTop_toBottomOf="@+id/viewDeleteBackground">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/thirdValueTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="2dp"
-                android:text="@{`Val3: ` + entry.thirdValue}"
-                android:theme="@style/Entry.Secondary.TextView"
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/entry_height"
+                    android:layout_marginEnd="24dp"
+                    android:src="@drawable/ic_inbox"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/viewForeground"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:padding="2dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/secondValueTextView"
-                app:layout_constraintTop_toBottomOf="@+id/descriptionTextView"
-                tools:text="Val3: 652.12%" />
+                app:layout_constraintStart_toEndOf="@+id/viewReadBackground"
+                app:layout_constraintTop_toBottomOf="@+id/viewReadBackground">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <View
+                    android:id="@+id/lockView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:alpha="0.2"
+                    android:background="@android:color/black"
+                    android:elevation="2dp"
+                    android:visibility="gone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/avatarImageView"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/entry_height"
+                    android:onClick="@{() -> viewModel.openOnFullScreen(entry.avatar)}"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toStartOf="@+id/quantityTextView"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/ic_boy_young" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/quantityTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    android:text="@{`Qta: ` + entry.quantity}"
+                    android:theme="@style/Entry.Main.TextView"
+                    app:layout_constraintBottom_toBottomOf="@+id/avatarImageView"
+                    app:layout_constraintEnd_toStartOf="@+id/amountTextView"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_weight="2"
+                    app:layout_constraintStart_toEndOf="@+id/avatarImageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Qta: 43" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/amountTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    android:text="@{`$` + entry.amount}"
+                    android:theme="@style/Entry.Main.TextView"
+                    app:layout_constraintBottom_toBottomOf="@+id/avatarImageView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_weight="2"
+                    app:layout_constraintStart_toEndOf="@+id/quantityTextView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="$400.43" />
+
+                <View
+                    android:id="@+id/separator"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/avatarImageView" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/descriptionTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@{`Description: ` + entry.description}"
+                    android:theme="@style/Entry.Secondary.TextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/separator"
+                    tools:text="Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/firstValueTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="4dp"
+                    android:text="@{`Val1: ` + entry.firstValue}"
+                    android:theme="@style/Entry.Secondary.TextView"
+                    app:layout_constraintEnd_toStartOf="@+id/secondValueTextView"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/descriptionTextView"
+                    tools:text="Val1: $342.12" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/secondValueTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@{`Val2: ` + entry.secondValue}"
+                    android:theme="@style/Entry.Secondary.TextView"
+                    app:layout_constraintEnd_toStartOf="@+id/thirdValueTextView"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/firstValueTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/descriptionTextView"
+                    tools:text="Val2: 123.12%" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/thirdValueTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="2dp"
+                    android:text="@{`Val3: ` + entry.thirdValue}"
+                    android:theme="@style/Entry.Secondary.TextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/secondValueTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/descriptionTextView"
+                    tools:text="Val3: 652.12%" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </FrameLayout>
 
 
     </androidx.cardview.widget.CardView>

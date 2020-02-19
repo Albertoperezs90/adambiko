@@ -32,6 +32,16 @@ class EntriesViewModel @Inject constructor(
         return true
     }
 
+    fun removeEntry(position: Int) {
+        val entries = _entriesUI.value?.toMutableList()
+        entries?.removeAt(position)
+        _entriesUI.value = entries
+    }
+
+    fun markAsDisabled(position: Int) {
+        _entriesUI.value = _entriesUI.value?.apply { get(position).also { it.isDisabled = true } }
+    }
+
     fun openOnFullScreen(drawableResource: Int) {
         _onNavigation.value = EntriesNavigation.FullScreen(drawableResource)
 

@@ -2,9 +2,12 @@ package com.aperezs.adambiko.operations.entries
 
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.aperezs.adambiko.R
 import com.aperezs.adambiko.common.base.BaseFragment
 import com.aperezs.adambiko.databinding.EntriesFragmentBinding
+import com.aperezs.adambiko.operations.entries.adapter.EntriesAdapter
+import com.aperezs.adambiko.operations.entries.adapter.SwipeCallback
 import com.aperezs.adambiko.operations.fullscren.FullScrenDialog
 
 class EntriesFragment : BaseFragment<EntriesFragmentBinding>(R.layout.entries_fragment) {
@@ -19,7 +22,14 @@ class EntriesFragment : BaseFragment<EntriesFragmentBinding>(R.layout.entries_fr
         injectDependencies()
         entriesViewModel = ViewModelProviders.of(requireActivity(), viewModelProvider)[EntriesViewModel::class.java]
         binding.viewModel = entriesViewModel
-        binding.entriesRecyclerView.adapter = adapter
+        binding.entriesRecyclerView.apply {
+            this.adapter = this@EntriesFragment.adapter
+            val itemTouchHelper = ItemTouchHelper(SwipeCallback(
+                onDelete = { entriesViewModel.removeEntry(it) },
+                onRead = { entriesViewModel.markAsDisabled(it) }
+            ))
+            itemTouchHelper.attachToRecyclerView(this)
+        }
 
         initializeObservers()
         entriesViewModel.loadInitialData()
