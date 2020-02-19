@@ -9,4 +9,7 @@
         <item>Hope you like it as much I do!</item>
     </string-array>
 
+    <string name="entry_removed">Entry has been removed</string>
+    <string name="entry_removed_cancel">Undo</string>
+
 </resources>

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.aperezs.adambiko.R
 import com.aperezs.adambiko.common.base.BaseFragment
+import com.aperezs.adambiko.common.extensions.showSnackbar
 import com.aperezs.adambiko.databinding.EntriesFragmentBinding
 import com.aperezs.adambiko.operations.entries.adapter.EntriesAdapter
 import com.aperezs.adambiko.operations.entries.adapter.SwipeCallback
@@ -25,7 +26,12 @@ class EntriesFragment : BaseFragment<EntriesFragmentBinding>(R.layout.entries_fr
         binding.entriesRecyclerView.apply {
             this.adapter = this@EntriesFragment.adapter
             val itemTouchHelper = ItemTouchHelper(SwipeCallback(
-                onDelete = { entriesViewModel.removeEntry(it) },
+                onDelete = {
+                    entriesViewModel.removeEntry(it)
+                    showSnackbar(R.string.entry_removed, R.string.entry_removed_cancel) {
+                        entriesViewModel.cancelRemove()
+                    }
+                },
                 onRead = { entriesViewModel.markAsDisabled(it) }
             ))
             itemTouchHelper.attachToRecyclerView(this)

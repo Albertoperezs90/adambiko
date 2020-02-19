@@ -19,6 +19,9 @@ class EntriesViewModel @Inject constructor(
     val onNavigation: LiveData<EntriesNavigation>
         get() = _onNavigation
 
+    private var lastEntryRemoved: Pair<Int, EntryUI?>? = null
+    private var isRestoring: Boolean = false
+
     fun loadInitialData() {
         _entriesUI.value = entryUIMock.generateList(2)
     }
@@ -32,8 +35,22 @@ class EntriesViewModel @Inject constructor(
         return true
     }
 
+    fun cancelRemove() {
+        if (!isRestoring) {
+            isRestoring = true
+            lastEntryRemoved?.let {
+                val entries = _entriesUI.value?.toMutableList()
+                entries?.add(lastEntryRemoved!!.first, lastEntryRemoved!!.second!!)
+                lastEntryRemoved = null
+                _entriesUI.value = entries
+            }
+            isRestoring = false
+        }
+    }
+
     fun removeEntry(position: Int) {
         val entries = _entriesUI.value?.toMutableList()
+        lastEntryRemoved = position to entries?.get(position)
         entries?.removeAt(position)
         _entriesUI.value = entries
     }
