@@ -16,7 +16,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp">
+            android:paddingBottom="24dp">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/bannerImage"
@@ -54,7 +54,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="32dp"
+                android:inputType="numberDecimal"
                 android:tag="$"
+                android:text="@{viewModel.firstValue}"
                 android:theme="@style/Modify.EditText"
                 app:layout_constraintBottom_toBottomOf="@+id/firstValueTextView"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -76,6 +78,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:enabled="false"
+                android:maxLength="6"
+                android:text="@{viewModel.amount}"
                 android:theme="@style/Modify.EditText"
                 app:layout_constraintBottom_toBottomOf="@+id/amountTextView"
                 app:layout_constraintEnd_toEndOf="@+id/firstValueEditText"
@@ -116,7 +120,9 @@
                 android:id="@+id/secondValueEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
                 android:tag="%"
+                android:text="@{viewModel.secondValue}"
                 android:theme="@style/Modify.EditText"
                 app:layout_constraintBottom_toBottomOf="@+id/secondValueTextView"
                 app:layout_constraintEnd_toEndOf="@+id/descriptionEditText"
@@ -138,7 +144,9 @@
                 android:id="@+id/thirdValueEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
                 android:tag="%"
+                android:text="@{viewModel.thirdValue}"
                 android:theme="@style/Modify.EditText"
                 app:layout_constraintBottom_toBottomOf="@+id/thirdValueTextView"
                 app:layout_constraintEnd_toEndOf="@+id/secondValueEditText"

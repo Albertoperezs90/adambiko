@@ -30,12 +30,14 @@
         <item name="android:backgroundTint">@color/colorPrimary</item>
         <item name="android:textCursorDrawable">@null</item>
         <item name="android:textColor">@color/colorPrimary</item>
-        <item name="android:inputType">text</item>
+        <item name="android:inputType">number</item>
+        <item name="android:maxLength">6</item>
     </style>
 
     <style name="Modify.MultiLine.EditText" parent="Modify.EditText">
         <item name="android:inputType">textMultiLine</item>
         <item name="android:gravity">start|top</item>
+        <item name="android:maxLength">99999999</item>
     </style>
 
 </resources>

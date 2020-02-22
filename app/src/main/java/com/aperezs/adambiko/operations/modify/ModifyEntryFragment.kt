@@ -28,14 +28,15 @@ class ModifyEntryFragment : BaseDialogFragment<ModifyDialogFragmentBinding>(R.la
         injectDependencies()
         val viewModel = ViewModelProviders.of(requireActivity(), viewModelFactory)[ModifyEntryViewModel::class.java]
         modifyEntryViewModel = viewModel
+        binding.viewModel = modifyEntryViewModel
         modifyEntryViewModel.initializeEntry(arguments?.get(ENTRY_UI) as EntryUI)
 
         configViews()
     }
 
     private fun configViews() {
-        binding.editText3.disableEdit()
-        binding.editText3.setTextColor(ResourcesCompat.getColor(resources, R.color.colorRed, null))
+        binding.amountEditText.disableEdit()
+        binding.amountEditText.setTextColor(ResourcesCompat.getColor(resources, R.color.colorPrimary, null))
     }
 
 
