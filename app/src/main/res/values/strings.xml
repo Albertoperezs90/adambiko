@@ -9,8 +9,8 @@
     <string name="third_value_parameterized">Val3: %1$s</string>
     <string name="entry_removed">Entry has been removed</string>
     <string name="entry_removed_cancel">Undo</string>
-    
-    
+
+
     <string name="first_value">Val1</string>
     <string name="amount">Qta</string>
     <string name="description">Description</string>
