@@ -45,7 +45,7 @@ class ModifyEntryFragment : BaseDialogFragment<ModifyDialogFragmentBinding>(com.
             lp.copyFrom(window.attributes)
             //This makes the dialog take up the full width
             lp.width = WindowManager.LayoutParams.MATCH_PARENT
-            lp.height = WindowManager.LayoutParams.MATCH_PARENT
+            lp.height = WindowManager.LayoutParams.WRAP_CONTENT
             window.attributes = lp
         }
     }
