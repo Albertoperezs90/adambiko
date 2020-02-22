@@ -16,8 +16,8 @@ class ModifyEntryViewModel @Inject constructor() : BaseViewModel() {
     val secondValue: LiveData<String> = Transformations.map(entry) { it.secondValue }
     val thirdValue: LiveData<String> = Transformations.map(entry) { it.thirdValue }
 
-    var firstValueMutable = MutableLiveData<String>()
-    var amountMutable = MutableLiveData<String>()
+    private var firstValueMutable = MutableLiveData<String>()
+    private var amountMutable = MutableLiveData<String>()
 
     var totalAmount = MutableLiveData<String>()
 

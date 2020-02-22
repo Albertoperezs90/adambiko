@@ -32,12 +32,13 @@ class PrefixEditText @JvmOverloads constructor(context: Context, attrs: Attribut
         }
     }
 
-    override fun onDrawForeground(canvas: Canvas?) {
-        super.onDrawForeground(canvas)
+    override fun onDraw(canvas: Canvas?) {
+        super.onDraw(canvas)
         val prefix = tag as String
         canvas?.drawText(
             prefix, mOriginalLeftPadding,
             getLineBounds(0, null).toFloat(), paint
         )
     }
+
 }
