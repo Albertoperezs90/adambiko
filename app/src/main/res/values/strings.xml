@@ -17,4 +17,6 @@
     <string name="second_value">Val2</string>
     <string name="third_value">Val3</string>
 
+    <string name="cancel">Cancel</string>
+    <string name="update">Update</string>
 </resources>

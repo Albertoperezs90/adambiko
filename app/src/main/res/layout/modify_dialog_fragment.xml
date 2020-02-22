@@ -7,6 +7,10 @@
         <variable
             name="viewModel"
             type="com.aperezs.adambiko.operations.modify.ModifyEntryViewModel" />
+
+        <variable
+            name="entrisViewModel"
+            type="com.aperezs.adambiko.operations.entries.EntriesViewModel" />
     </data>
 
     <ScrollView
@@ -52,15 +56,13 @@
                 android:id="@+id/firstValueEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="32dp"
                 android:inputType="numberDecimal"
                 android:tag="$"
                 android:text="@{viewModel.firstValue}"
                 android:theme="@style/Modify.EditText"
                 app:layout_constraintBottom_toBottomOf="@+id/firstValueTextView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/firstValueTextView"
+                app:layout_constraintEnd_toEndOf="@+id/amountEditText"
+                app:layout_constraintStart_toStartOf="@id/amountEditText"
                 app:layout_constraintTop_toTopOf="@+id/firstValueTextView" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -73,6 +75,22 @@
                 app:layout_constraintStart_toStartOf="@+id/firstValueTextView"
                 app:layout_constraintTop_toBottomOf="@+id/firstValueEditText" />
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/minusAmountButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:background="@color/colorPrimary"
+                android:backgroundTint="@android:color/white"
+                android:onClick="@{() -> viewModel.decreaseQuantity()}"
+                android:src="@drawable/ic_minus"
+                app:backgroundTint="@color/colorPrimary"
+                app:fabSize="mini"
+                app:layout_constraintBottom_toBottomOf="@+id/amountEditText"
+                app:layout_constraintEnd_toStartOf="@+id/amountEditText"
+                app:layout_constraintStart_toEndOf="@+id/amountTextView"
+                app:layout_constraintTop_toTopOf="@+id/amountEditText" />
+
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/amountEditText"
                 android:layout_width="0dp"
@@ -82,9 +100,25 @@
                 android:text="@{viewModel.amount}"
                 android:theme="@style/Modify.EditText"
                 app:layout_constraintBottom_toBottomOf="@+id/amountTextView"
-                app:layout_constraintEnd_toEndOf="@+id/firstValueEditText"
-                app:layout_constraintStart_toStartOf="@+id/firstValueEditText"
+                app:layout_constraintEnd_toStartOf="@id/plusAmountButton"
+                app:layout_constraintStart_toEndOf="@id/minusAmountButton"
                 app:layout_constraintTop_toTopOf="@+id/amountTextView" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/plusAmountButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="@android:color/white"
+                android:onClick="@{() -> viewModel.increaseQuantity()}"
+                android:src="@drawable/ic_plus"
+                app:backgroundTint="@color/colorPrimary"
+                app:fabSize="mini"
+                app:layout_constraintBottom_toBottomOf="@+id/amountEditText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/amountEditText"
+                app:layout_constraintTop_toTopOf="@+id/amountEditText"
+                app:rippleColor="@color/colorPrimary" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/descriptionTextView"
@@ -166,6 +200,36 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/thirdValueEditText" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cancelButton"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/roboto"
+                android:text="@string/cancel"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintEnd_toStartOf="@id/saveButton"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/totalAmountTextView" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/saveButton"
+                style="@style/TextAppearance.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:fontFamily="@font/roboto"
+                android:text="@string/update"
+                android:textColor="@android:color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cancelButton"
+                app:layout_constraintTop_toBottomOf="@+id/totalAmountTextView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

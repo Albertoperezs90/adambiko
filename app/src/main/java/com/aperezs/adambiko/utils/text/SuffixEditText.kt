@@ -10,7 +10,7 @@ import androidx.appcompat.widget.AppCompatEditText
 class SuffixEditText @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : AppCompatEditText(context, attrs, defStyleAttr) {
 
     private val textPaint = TextPaint()
-    private var errorMarginPaddingRight = 10f
+    private var errorMarginPaddingRight = 12f
 
     override fun onFinishInflate() {
         super.onFinishInflate()

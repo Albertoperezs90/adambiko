@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -28,6 +28,7 @@
 
     <style name="Modify.EditText" parent="Widget.AppCompat.EditText">
         <item name="android:backgroundTint">@color/colorPrimary</item>
+        <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textCursorDrawable">@null</item>
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:inputType">number</item>

@@ -17,7 +17,7 @@ class EntryUIMock @Inject constructor(private val resources: Resources) {
                 EntryUI(
                     avatar = getRandomImage(),
                     quantity = randomInteger(10, 99).toString(),
-                    amount = randomDouble(200.0, 500.0).toString().formatDecimalWith("000.00"),
+                    amount = randomInteger(200, 500).toString(),
                     isDisabled = false,
                     description = getRandomStringFromArrayResources(resources, R.array.entry_description).orEmpty(),
                     firstValue = randomDouble(20.0, 40.0).toString().formatDecimalWith(),
@@ -33,7 +33,7 @@ class EntryUIMock @Inject constructor(private val resources: Resources) {
         return EntryUI(
             avatar = getRandomImage(),
             quantity = randomInteger(10, 99).toString(),
-            amount = randomDouble(200.0, 500.0).toString().formatDecimalWith("000.00"),
+            amount = randomInteger(200, 500).toString(),
             isDisabled = false,
             description = getRandomStringFromArrayResources(resources, R.array.entry_description).orEmpty(),
             firstValue = randomDouble(20.0, 40.0).toString().formatDecimalWith(),

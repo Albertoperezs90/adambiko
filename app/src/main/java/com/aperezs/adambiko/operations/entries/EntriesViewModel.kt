@@ -21,6 +21,7 @@ class EntriesViewModel @Inject constructor(
 
     private var lastEntryRemoved: Pair<Int, EntryUI?>? = null
     private var isRestoring: Boolean = false
+    private var entryUIIndex: Int = 0
 
     fun loadInitialData() {
         _entriesUI.value = entryUIMock.generateList(2)
@@ -64,6 +65,14 @@ class EntriesViewModel @Inject constructor(
     }
 
     fun modifyEntry(entryUI: EntryUI) {
+        entryUIIndex = _entriesUI.value?.indexOf(entryUI) ?: 0
         _onNavigation.value = EntriesNavigation.ModifyEntry(entryUI)
+    }
+
+    fun updateEntryData(entryUI: EntryUI) {
+        _entriesUI.value = _entriesUI.value?.toMutableList()?.apply {
+            removeAt(entryUIIndex)
+            add(entryUIIndex, entryUI)
+        }
     }
 }

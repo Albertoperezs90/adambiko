@@ -7,6 +7,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProviders
 import com.aperezs.adambiko.common.base.BaseDialogFragment
 import com.aperezs.adambiko.databinding.ModifyDialogFragmentBinding
+import com.aperezs.adambiko.operations.entries.EntriesViewModel
 import com.aperezs.adambiko.operations.entries.model.EntryUI
 import com.aperezs.adambiko.utils.edittext.disableEdit
 
@@ -14,6 +15,7 @@ import com.aperezs.adambiko.utils.edittext.disableEdit
 class ModifyEntryFragment : BaseDialogFragment<ModifyDialogFragmentBinding>(com.aperezs.adambiko.R.layout.modify_dialog_fragment) {
 
     private lateinit var modifyEntryViewModel: ModifyEntryViewModel
+    private lateinit var entriesViewModel: EntriesViewModel
 
     companion object {
 
@@ -29,6 +31,7 @@ class ModifyEntryFragment : BaseDialogFragment<ModifyDialogFragmentBinding>(com.
     override fun initialize() {
         injectDependencies()
         val viewModel = ViewModelProviders.of(requireActivity(), viewModelFactory)[ModifyEntryViewModel::class.java]
+        entriesViewModel = ViewModelProviders.of(requireActivity(), viewModelFactory)[EntriesViewModel::class.java]
         modifyEntryViewModel = viewModel
         binding.viewModel = modifyEntryViewModel
         modifyEntryViewModel.initializeEntry(arguments?.get(ENTRY_UI) as EntryUI)
@@ -62,6 +65,20 @@ class ModifyEntryFragment : BaseDialogFragment<ModifyDialogFragmentBinding>(com.
 
         binding.amountEditText.addTextChangedListener {
             modifyEntryViewModel.updateAmountValue(it.toString())
+        }
+
+        binding.saveButton.setOnClickListener {
+            val entryUI = modifyEntryViewModel.getEntryUIData()
+            val firstValue = binding.firstValueEditText.text.toString()
+            val qta = binding.amountEditText.text.toString()
+            val secondValue = binding.secondValueEditText.text.toString()
+            val thirdValue = binding.thirdValueEditText.text.toString()
+            entriesViewModel.updateEntryData(entryUI.copy(firstValue = firstValue, quantity = qta, secondValue = secondValue, thirdValue = thirdValue))
+            dismiss()
+        }
+
+        binding.cancelButton.setOnClickListener {
+            dismiss()
         }
     }
 
