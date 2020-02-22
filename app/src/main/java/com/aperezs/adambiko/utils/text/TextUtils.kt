@@ -1,6 +1,8 @@
 package com.aperezs.adambiko.utils.text
 
 import android.content.res.Resources
+import android.widget.EditText
+import androidx.core.widget.doOnTextChanged
 import java.math.RoundingMode
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
@@ -32,4 +34,10 @@ fun String.getDecimals(): String? {
 
 fun getRandomStringFromArrayResources(resources: Resources, arrayResource: Int): String? {
     return resources.getStringArray(arrayResource).random()
+}
+
+fun EditText.appendCharacterAtTheEnd(character: Char) {
+    doOnTextChanged { text, start, count, after ->
+
+    }
 }
