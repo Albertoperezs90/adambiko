@@ -6,7 +6,9 @@ import javax.inject.Inject
 
 class ModifyEntryViewModel @Inject constructor() : BaseViewModel() {
 
-    fun initializeEntry(entryUI: EntryUI) {
+    private lateinit var entry: EntryUI
 
+    fun initializeEntry(entryUI: EntryUI) {
+        entry = entryUI
     }
 }

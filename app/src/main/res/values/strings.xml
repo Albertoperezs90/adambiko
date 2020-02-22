@@ -1,13 +1,20 @@
 <resources>
     <string name="app_name">AdamBiko</string>
 
-    <string name="qta">Qta: %1$s</string>
-    <string name="amount">$%1$s</string>
-    <string name="description">Description: %1$s</string>
-    <string name="first_value">Val1: %1$s</string>
-    <string name="second_value">Val2: %1$s</string>
-    <string name="third_value">Val3: %1$s</string>
+    <string name="qta_parameterized">Qta: %1$s</string>
+    <string name="amount_parameterized">$%1$s</string>
+    <string name="description_parameterized">Description: %1$s</string>
+    <string name="first_value_parameterized">Val1: %1$s</string>
+    <string name="second_value_parameterized">Val2: %1$s</string>
+    <string name="third_value_parameterized">Val3: %1$s</string>
     <string name="entry_removed">Entry has been removed</string>
     <string name="entry_removed_cancel">Undo</string>
+    
+    
+    <string name="first_value">Val1</string>
+    <string name="amount">Qta</string>
+    <string name="description">Description</string>
+    <string name="second_value">Val2</string>
+    <string name="third_value">Val3</string>
 
 </resources>

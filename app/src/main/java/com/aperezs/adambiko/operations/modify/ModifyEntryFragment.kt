@@ -29,4 +29,5 @@ class ModifyEntryFragment : BaseDialogFragment<ModifyDialogFragmentBinding>(R.la
         modifyEntryViewModel.initializeEntry(arguments?.get(ENTRY_UI) as EntryUI)
     }
 
+
 }

@@ -20,4 +20,22 @@
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
+
+    <style name="Modify.Textview" parent="Entry.Secondary.TextView">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+
+    <style name="Modify.EditText" parent="Widget.AppCompat.EditText">
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:inputType">text</item>
+    </style>
+
+    <style name="Modify.MultiLine.EditText" parent="Modify.EditText">
+        <item name="android:inputType">textMultiLine</item>
+        <item name="android:gravity">start|top</item>
+    </style>
+
 </resources>

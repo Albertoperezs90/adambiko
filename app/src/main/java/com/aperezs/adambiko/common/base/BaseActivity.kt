@@ -7,7 +7,6 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import com.aperezs.adambiko.di.AdambikoApplication
 import com.aperezs.adambiko.di.component.ActivityComponent
-import com.aperezs.adambiko.di.module.ActivityScopeViewModelModule
 import javax.inject.Inject
 
 abstract class BaseActivity<V : ViewDataBinding>(private val layoutRes: Int) : AppCompatActivity() {
