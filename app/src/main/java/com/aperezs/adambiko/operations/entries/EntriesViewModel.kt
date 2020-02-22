@@ -61,6 +61,9 @@ class EntriesViewModel @Inject constructor(
 
     fun openOnFullScreen(drawableResource: Int) {
         _onNavigation.value = EntriesNavigation.FullScreen(drawableResource)
+    }
 
+    fun modifyEntry(entryUI: EntryUI) {
+        _onNavigation.value = EntriesNavigation.ModifyEntry(entryUI)
     }
 }

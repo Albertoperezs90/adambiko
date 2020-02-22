@@ -9,18 +9,18 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.aperezs.adambiko.di.component.FragmentDialogComponent
+import javax.inject.Inject
 
 abstract class BaseDialogFragment<V : ViewDataBinding>(private val layoutRes: Int) : DialogFragment() {
 
-    protected val viewModelProvider: ViewModelProvider.Factory by lazy {
-        (activity as BaseActivity<*>).viewModelFactory
-    }
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     val fragmentDialogComponent: FragmentDialogComponent by lazy {
-        (activity as BaseActivity<*>).activityComponent.fragmentDialogBuilder().build()
+        (activity as BaseActivity<*>).activityComponent.fragmentComponentDialogBuilder().build()
     }
 
-    lateinit var binding: V
+    protected lateinit var binding: V
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, layoutRes, container, false)

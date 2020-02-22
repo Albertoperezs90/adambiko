@@ -25,7 +25,7 @@ class FullScrenDialog : BaseDialogFragment<FullscreenDialogFragmentBinding>(R.la
     override fun initialize() {
         injectDependencies()
         val drawableRes = arguments?.get(DRAWABLE_RES_KEY) as Int
-        fullScreenViewModel = ViewModelProviders.of(this, viewModelProvider)[FullScreenViewModel::class.java]
+        fullScreenViewModel = ViewModelProviders.of(this, viewModelFactory)[FullScreenViewModel::class.java]
         binding.viewModel = fullScreenViewModel
         fullScreenViewModel.loadDrawableResource(drawableRes)
     }

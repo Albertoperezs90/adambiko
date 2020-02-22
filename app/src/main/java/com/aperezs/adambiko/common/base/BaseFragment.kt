@@ -9,12 +9,12 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.aperezs.adambiko.di.component.FragmentComponent
+import javax.inject.Inject
 
 abstract class BaseFragment<V : ViewDataBinding>(private val layoutRes: Int) : Fragment() {
 
-    protected val viewModelProvider: ViewModelProvider.Factory by lazy {
-        (activity as BaseActivity<*>).viewModelFactory
-    }
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     val fragmentComponent: FragmentComponent by lazy {
         (activity as BaseActivity<*>).activityComponent.fragmentComponentBuilder().build()

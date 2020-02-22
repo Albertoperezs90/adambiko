@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:elevation="8dp"
+        android:onClick="@{() -> viewModel.modifyEntry(entry)}"
         app:cardCornerRadius="8dp"
         app:cardUseCompatPadding="false">
 
@@ -97,7 +98,6 @@
                     android:id="@+id/avatarImageView"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/entry_height"
-                    android:onClick="@{() -> viewModel.openOnFullScreen(entry.avatar)}"
                     android:paddingStart="2dp"
                     android:paddingTop="2dp"
                     android:scaleType="centerCrop"

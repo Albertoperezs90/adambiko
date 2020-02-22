@@ -7,7 +7,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import com.aperezs.adambiko.di.AdambikoApplication
 import com.aperezs.adambiko.di.component.ActivityComponent
-import com.aperezs.adambiko.di.module.ViewModelModule
+import com.aperezs.adambiko.di.module.ActivityScopeViewModelModule
 import javax.inject.Inject
 
 abstract class BaseActivity<V : ViewDataBinding>(private val layoutRes: Int) : AppCompatActivity() {
@@ -16,7 +16,7 @@ abstract class BaseActivity<V : ViewDataBinding>(private val layoutRes: Int) : A
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     val activityComponent: ActivityComponent by lazy {
-        (application as AdambikoApplication).applicationComponent.activityComponent().viewModelModule(ViewModelModule()).build()
+        (application as AdambikoApplication).applicationComponent.activityComponent().build()
     }
 
     lateinit var binding: V
