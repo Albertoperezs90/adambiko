@@ -2,6 +2,7 @@ package com.aperezs.adambiko.operations.modify
 
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.os.bundleOf
+import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProviders
 import com.aperezs.adambiko.R
 import com.aperezs.adambiko.common.base.BaseDialogFragment
@@ -32,11 +33,22 @@ class ModifyEntryFragment : BaseDialogFragment<ModifyDialogFragmentBinding>(R.la
         modifyEntryViewModel.initializeEntry(arguments?.get(ENTRY_UI) as EntryUI)
 
         configViews()
+        setListeners()
     }
 
     private fun configViews() {
         binding.amountEditText.disableEdit()
         binding.amountEditText.setTextColor(ResourcesCompat.getColor(resources, R.color.colorPrimary, null))
+    }
+
+    private fun setListeners() {
+        binding.firstValueEditText.addTextChangedListener {
+            modifyEntryViewModel.updateFirstValue(it.toString())
+        }
+
+        binding.amountEditText.addTextChangedListener {
+            modifyEntryViewModel.updateAmountValue(it.toString())
+        }
     }
 
 

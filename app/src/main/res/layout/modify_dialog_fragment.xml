@@ -154,14 +154,14 @@
                 app:layout_constraintTop_toTopOf="@+id/thirdValueTextView" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textView7"
+                android:id="@+id/totalAmountTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
                 android:gravity="center"
-                android:text="qwdw"
+                android:text="@{`$` + viewModel.totalAmount}"
                 android:theme="@style/Modify.Textview"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -16,7 +16,41 @@ class ModifyEntryViewModel @Inject constructor() : BaseViewModel() {
     val secondValue: LiveData<String> = Transformations.map(entry) { it.secondValue }
     val thirdValue: LiveData<String> = Transformations.map(entry) { it.thirdValue }
 
+    var firstValueMutable = MutableLiveData<String>()
+    var amountMutable = MutableLiveData<String>()
+
+    var totalAmount = MutableLiveData<String>()
+
     fun initializeEntry(entryUI: EntryUI) {
         entry.value = entryUI
+    }
+
+    fun updateFirstValue(value: String) {
+        firstValueMutable.value = value
+        calculateTotalAmount()
+    }
+
+    fun updateAmountValue(amount: String) {
+        amountMutable.value = amount
+        calculateTotalAmount()
+    }
+
+    private fun calculateTotalAmount() {
+        val firstValue = firstValueMutable.value?.let {
+            if (it.isNotBlank()) {
+                it.toFloat()
+            } else {
+                0f
+            }
+        } ?: 0f
+        val amountValue = amountMutable.value?.let {
+            if (it.isNotBlank()) {
+                it.toFloat()
+            } else {
+                0f
+            }
+        } ?: 0f
+
+        totalAmount.value = (firstValue + amountValue).toString()
     }
 }
