@@ -71,9 +71,10 @@ class ModifyEntryFragment : BaseDialogFragment<ModifyDialogFragmentBinding>(com.
             val entryUI = modifyEntryViewModel.getEntryUIData()
             val firstValue = binding.firstValueEditText.text.toString()
             val qta = binding.amountEditText.text.toString()
+            val description = binding.descriptionEditText.text.toString()
             val secondValue = binding.secondValueEditText.text.toString()
             val thirdValue = binding.thirdValueEditText.text.toString()
-            entriesViewModel.updateEntryData(entryUI.copy(firstValue = firstValue, quantity = qta, secondValue = secondValue, thirdValue = thirdValue))
+            entriesViewModel.updateEntryData(entryUI.copy(firstValue = firstValue, quantity = qta, description = description, secondValue = secondValue, thirdValue = thirdValue))
             dismiss()
         }
 

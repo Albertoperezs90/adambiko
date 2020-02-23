@@ -1,7 +1,9 @@
 package com.aperezs.adambiko.common.extensions
 
 import android.os.Bundle
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import com.aperezs.adambiko.R
 import com.aperezs.adambiko.common.base.BaseActivity
 import com.aperezs.adambiko.common.base.BaseFragment
 import com.google.android.material.snackbar.Snackbar
@@ -22,5 +24,6 @@ fun BaseFragment<*>.showSnackbar(titleRes: Int, actionRes: Int, onAction: () -> 
         .setAction(actionRes) {
             onAction()
         }
+        .setActionTextColor(ResourcesCompat.getColor(resources, R.color.colorAccent, null))
         .show()
 }
