@@ -21,6 +21,11 @@ class ResourcesModule(private val application: Application) {
     }
 
     @Provides
+    fun provideApplication() : Application {
+        return application
+    }
+
+    @Provides
     fun provideResources(): Resources {
         return application.resources
     }

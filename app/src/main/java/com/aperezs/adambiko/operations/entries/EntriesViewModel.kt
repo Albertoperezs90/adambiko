@@ -5,10 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import com.aperezs.adambiko.common.base.BaseViewModel
 import com.aperezs.adambiko.operations.entries.model.EntryUI
 import com.aperezs.adambiko.operations.entries.model.EntryUIMock
+import com.aperezs.adambiko.storage.datasource.LocalDataSource
 import javax.inject.Inject
 
 class EntriesViewModel @Inject constructor(
-    private val entryUIMock: EntryUIMock
+    private val entryUIMock: EntryUIMock,
+    private val localDataSource: LocalDataSource
 ) : BaseViewModel() {
 
     private val _entriesUI = MutableLiveData<List<EntryUI>>()
@@ -24,7 +26,7 @@ class EntriesViewModel @Inject constructor(
     private var entryUIIndex: Int = 0
 
     fun loadInitialData() {
-        _entriesUI.value = entryUIMock.generateList(2)
+        _entriesUI.postValue(entryUIMock.generateList(2))
     }
 
     fun addNewEntry() {
