@@ -20,7 +20,7 @@ interface EntryDAO {
     @Delete
     suspend fun deleteEntry(entry: EntryEntity)
 
-    @Update
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateEntry(entry: EntryEntity)
 
     @Query("DELETE FROM entry")

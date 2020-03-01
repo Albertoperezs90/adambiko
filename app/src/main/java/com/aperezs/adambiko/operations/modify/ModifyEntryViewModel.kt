@@ -13,6 +13,7 @@ class ModifyEntryViewModel @Inject constructor() : BaseViewModel() {
 
     val firstValue: LiveData<String> = Transformations.map(entry) { it.firstValue }
     val amount: LiveData<String> = Transformations.map(entry) { it.quantity }
+    val description: LiveData<String> = Transformations.map(entry) { it.description }
     val secondValue: LiveData<String> = Transformations.map(entry) { it.secondValue }
     val thirdValue: LiveData<String> = Transformations.map(entry) { it.thirdValue }
 
@@ -26,12 +27,12 @@ class ModifyEntryViewModel @Inject constructor() : BaseViewModel() {
     }
 
     fun increaseQuantity() {
-        val newEntry = entry.value?.copy(quantity = entry.value?.quantity?.toInt()?.inc().toString())
+        val newEntry = entry.value?.copy(quantity = entry.value?.quantity?.toDouble()?.inc().toString())
         entry.value = newEntry
     }
 
     fun decreaseQuantity() {
-        val quantity = entry.value?.quantity?.toInt()?.dec() ?: 0
+        val quantity = entry.value?.quantity?.toDouble()?.dec() ?: 0.0
         if (quantity > 0) {
             val newEntry = entry.value?.copy(quantity = quantity.toString())
             entry.value = newEntry

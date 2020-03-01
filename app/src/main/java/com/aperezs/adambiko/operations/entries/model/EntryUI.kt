@@ -6,6 +6,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class EntryUI(
+    val id: Int = 0,
     val avatar: Int,
     val quantity: String,
     val amount: String,
@@ -17,4 +18,4 @@ data class EntryUI(
 ) : Parcelable
 
 
-fun EntryEntity.toEntryUI() = EntryUI(avatar, quantity, amount, isDisabled, description, firstValue, secondValue, thirdValue)
+fun EntryEntity.toEntryUI() = EntryUI(id, avatar, quantity, amount, isDisabled, description, firstValue, secondValue, thirdValue)

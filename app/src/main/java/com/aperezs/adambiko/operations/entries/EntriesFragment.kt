@@ -48,7 +48,7 @@ class EntriesFragment : BaseFragment<EntriesFragmentBinding>(R.layout.entries_fr
                     entriesViewModel.cancelRemove()
                 }
             },
-            onRead = { entriesViewModel.markAsDisabled(it) }
+            onRead = { entriesViewModel.toggleDisable(it) }
         ))
         itemTouchHelper.attachToRecyclerView(this)
     }

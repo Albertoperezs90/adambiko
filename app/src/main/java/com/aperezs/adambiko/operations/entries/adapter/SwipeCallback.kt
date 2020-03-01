@@ -48,11 +48,6 @@ class SwipeCallback(
         ItemTouchHelper.Callback.getDefaultUIUtil().clearView(getForegroundView(viewHolder = viewHolder))
     }
 
-    override fun getSwipeDirs(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder): Int {
-        val entry = (viewHolder as EntriesAdapter.ViewHolder).binding.entry
-        return if (entry != null && entry.isDisabled) 0 else super.getSwipeDirs(recyclerView, viewHolder)
-    }
-
 
     private fun isSwipingToRight(dX: Float) = dX > 0
     private fun isSwipingToLeft(dX: Float) = dX < 0

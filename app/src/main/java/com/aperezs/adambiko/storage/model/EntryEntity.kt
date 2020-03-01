@@ -18,4 +18,4 @@ data class EntryEntity(
 )
 
 
-fun EntryUI.toEntryEntity() = EntryEntity(0, avatar, quantity, amount, isDisabled, description, firstValue, secondValue, thirdValue)
+fun EntryUI.toEntryEntity() = EntryEntity(id, avatar, quantity, amount, isDisabled, description, firstValue, secondValue, thirdValue)

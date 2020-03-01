@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.aperezs.adambiko.common.base.BaseViewModel
 import com.aperezs.adambiko.operations.entries.model.EntryUI
 import com.aperezs.adambiko.operations.entries.model.EntryUIMock
+import com.aperezs.adambiko.operations.entries.model.toEntryUI
 import com.aperezs.adambiko.storage.datasource.LocalDataSource
 import javax.inject.Inject
 
@@ -26,14 +27,20 @@ class EntriesViewModel @Inject constructor(
     private var entryUIIndex: Int = 0
 
     fun loadInitialData() {
-        _entriesUI.postValue(entryUIMock.generateList(2))
+        localDataSource.getAllEntries { entries ->
+            val entriesSorted = entries.sortedBy { it.id }
+            _entriesUI.postValue(entriesSorted.map { it.toEntryUI() })
+        }
     }
 
     fun addNewEntry() {
-        _entriesUI.value = _entriesUI.value?.plus(entryUIMock.generate())
+        val newEntry = entryUIMock.generate()
+        localDataSource.insertEntry(newEntry)
+        _entriesUI.value = _entriesUI.value?.plus(newEntry)
     }
 
     fun removeEntries(): Boolean {
+        localDataSource.deleteAll()
         _entriesUI.value = emptyList()
         return true
     }
@@ -44,6 +51,7 @@ class EntriesViewModel @Inject constructor(
             lastEntryRemoved?.let {
                 val entries = _entriesUI.value?.toMutableList()
                 entries?.add(lastEntryRemoved!!.first, lastEntryRemoved!!.second!!)
+                localDataSource.insertEntry(lastEntryRemoved!!.second!!)
                 lastEntryRemoved = null
                 _entriesUI.value = entries
             }
@@ -55,11 +63,17 @@ class EntriesViewModel @Inject constructor(
         val entries = _entriesUI.value?.toMutableList()
         lastEntryRemoved = position to entries?.get(position)
         entries?.removeAt(position)
+        localDataSource.deleteEntry(position)
         _entriesUI.value = entries
     }
 
-    fun markAsDisabled(position: Int) {
-        _entriesUI.value = _entriesUI.value?.apply { get(position).also { it.isDisabled = true } }
+    fun toggleDisable(position: Int) {
+        val disableEntry = _entriesUI.value?.get(position)
+        disableEntry?.let { entry ->
+            entry.isDisabled = !entry.isDisabled
+            localDataSource.updateEntry(entry)
+            _entriesUI.value = _entriesUI.value?.apply { get(position).also { it.isDisabled = disableEntry.isDisabled} }
+        }
     }
 
     fun openOnFullScreen(drawableResource: Int) {
@@ -73,6 +87,7 @@ class EntriesViewModel @Inject constructor(
 
     fun updateEntryData(entryUI: EntryUI) {
         _entriesUI.value = _entriesUI.value?.toMutableList()?.apply {
+            localDataSource.updateEntry(entryUI)
             removeAt(entryUIIndex)
             add(entryUIIndex, entryUI)
         }
