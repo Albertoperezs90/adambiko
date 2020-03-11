@@ -3,6 +3,7 @@ package com.aperezs.adambiko.operations.entries
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.aperezs.adambiko.R
 import com.aperezs.adambiko.common.base.BaseFragment
@@ -26,6 +27,7 @@ class EntriesFragment : BaseFragment<EntriesFragmentBinding>(R.layout.entries_fr
         entriesViewModel = ViewModelProviders.of(requireActivity(), viewModelFactory)[EntriesViewModel::class.java]
         binding.viewModel = entriesViewModel
         binding.entriesRecyclerView.configWithSwipe()
+        binding.entriesRecyclerView.addItemsFromTop()
         initializeObservers()
         entriesViewModel.loadInitialData()
     }
@@ -36,6 +38,10 @@ class EntriesFragment : BaseFragment<EntriesFragmentBinding>(R.layout.entries_fr
                 is EntriesNavigation.FullScreen -> FullScrenDialog.newInstance(it.drawableResource).show(childFragmentManager, FullScrenDialog.toString())
                 is EntriesNavigation.ModifyEntry -> ModifyEntryFragment.newInstance(it.entryUI).show(childFragmentManager, ModifyEntryFragment.toString())
             }
+        })
+
+        entriesViewModel.entriesUI.observe(this, Observer {
+            binding.entriesRecyclerView.scrollToPosition(it.size - 1)
         })
     }
 
@@ -52,5 +58,13 @@ class EntriesFragment : BaseFragment<EntriesFragmentBinding>(R.layout.entries_fr
         ))
         itemTouchHelper.attachToRecyclerView(this)
     }
+
+    private fun RecyclerView.addItemsFromTop() {
+        (layoutManager as? LinearLayoutManager)?.apply {
+            reverseLayout = true
+            stackFromEnd = true
+        }
+    }
+
 
 }
