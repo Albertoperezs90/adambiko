@@ -30,13 +30,17 @@ class EntriesViewModel @Inject constructor(
         localDataSource.getAllEntries { entries ->
             val entriesSorted = entries.sortedBy { it.id }
             _entriesUI.postValue(entriesSorted.map { it.toEntryUI() })
+
         }
     }
 
     fun addNewEntry() {
         val newEntry = entryUIMock.generate()
         localDataSource.insertEntry(newEntry)
-        _entriesUI.value = _entriesUI.value?.plus(newEntry)
+        localDataSource.getAllEntries { entries ->
+            val entriesSorted = entries.sortedBy { it.id }
+            _entriesUI.postValue(entriesSorted.map { it.toEntryUI() })
+        }
     }
 
     fun removeEntries(): Boolean {
@@ -70,8 +74,8 @@ class EntriesViewModel @Inject constructor(
     fun toggleDisable(position: Int) {
         val disableEntry = _entriesUI.value?.get(position)
         disableEntry?.let { entry ->
-            entry.isDisabled = !entry.isDisabled
             localDataSource.updateEntry(entry)
+            entry.isDisabled = !entry.isDisabled
             _entriesUI.value = _entriesUI.value?.apply { get(position).also { it.isDisabled = disableEntry.isDisabled} }
         }
     }

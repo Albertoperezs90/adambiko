@@ -12,7 +12,6 @@ class ModifyEntryViewModel @Inject constructor() : BaseViewModel() {
     private var entry = MutableLiveData<EntryUI>()
 
     val firstValue: LiveData<String> = Transformations.map(entry) { it.firstValue }
-    val amount: LiveData<String> = Transformations.map(entry) { it.quantity }
     val description: LiveData<String> = Transformations.map(entry) { it.description }
     val secondValue: LiveData<String> = Transformations.map(entry) { it.secondValue }
     val thirdValue: LiveData<String> = Transformations.map(entry) { it.thirdValue }
@@ -20,22 +19,33 @@ class ModifyEntryViewModel @Inject constructor() : BaseViewModel() {
     private var firstValueMutable = MutableLiveData<String>()
     private var amountMutable = MutableLiveData<String>()
 
+    var quantity = MutableLiveData<String>()
+
     var totalAmount = MutableLiveData<String>()
 
     fun initializeEntry(entryUI: EntryUI) {
         entry.value = entryUI
+        quantity.value = entry.value?.quantity
     }
 
     fun increaseQuantity() {
-        val newEntry = entry.value?.copy(quantity = entry.value?.quantity?.toDouble()?.inc().toString())
-        entry.value = newEntry
+        val quantityStringified = quantity.value
+        if (quantityStringified != null && quantityStringified.isNotBlank()){
+            val newEntry = quantityStringified.toDouble().inc().toString()
+            entry.value?.copy(quantity = newEntry)
+            quantity.value = newEntry
+        }
     }
 
     fun decreaseQuantity() {
-        val quantity = entry.value?.quantity?.toDouble()?.dec() ?: 0.0
-        if (quantity > 0) {
-            val newEntry = entry.value?.copy(quantity = quantity.toString())
-            entry.value = newEntry
+        val newEntry = quantity.value
+        if (newEntry != null && newEntry.isNotBlank()) {
+            val decQuantity = newEntry.toDouble().dec()
+            if (decQuantity > 0) {
+                val quantityToString = decQuantity.toString()
+                entry.value?.copy(quantity = quantityToString)
+                quantity.value = quantityToString
+            }
         }
     }
 

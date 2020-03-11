@@ -20,8 +20,8 @@ class LocalDataSource(private val entryDAO: EntryDAO) {
 
     fun insertEntry(entry: EntryUI) {
         GlobalScope.launch {
-            entryDAO.insertEntry(entry.toEntryEntity())
             entries = entries.toMutableList().apply { add(entry.toEntryEntity()) }
+            entryDAO.insertEntry(entry.toEntryEntity())
         }
     }
 

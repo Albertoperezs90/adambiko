@@ -36,7 +36,6 @@ class ModifyEntryFragment : BaseDialogFragment<ModifyDialogFragmentBinding>(com.
         binding.viewModel = modifyEntryViewModel
         modifyEntryViewModel.initializeEntry(arguments?.get(ENTRY_UI) as EntryUI)
 
-        configViews()
         setListeners()
     }
 
@@ -52,11 +51,7 @@ class ModifyEntryFragment : BaseDialogFragment<ModifyDialogFragmentBinding>(com.
             window.attributes = lp
         }
     }
-
-    private fun configViews() {
-        binding.amountEditText.disableEdit()
-        binding.amountEditText.setTextColor(ResourcesCompat.getColor(resources, com.aperezs.adambiko.R.color.colorPrimary, null))
-    }
+    
 
     private fun setListeners() {
         binding.firstValueEditText.addTextChangedListener {
