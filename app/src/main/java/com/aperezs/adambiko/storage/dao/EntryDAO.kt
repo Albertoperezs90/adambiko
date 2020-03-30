@@ -15,7 +15,7 @@ interface EntryDAO {
     fun getAllEntries(): List<EntryEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertEntry(entry: EntryEntity)
+    suspend fun insertEntry(entry: EntryEntity): Long
 
     @Delete
     suspend fun deleteEntry(entry: EntryEntity)

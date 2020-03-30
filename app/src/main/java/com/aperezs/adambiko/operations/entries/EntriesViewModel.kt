@@ -36,10 +36,11 @@ class EntriesViewModel @Inject constructor(
 
     fun addNewEntry() {
         val newEntry = entryUIMock.generate()
-        localDataSource.insertEntry(newEntry)
-        localDataSource.getAllEntries { entries ->
-            val entriesSorted = entries.sortedBy { it.id }
-            _entriesUI.postValue(entriesSorted.map { it.toEntryUI() })
+        localDataSource.insertEntry(newEntry) {
+            localDataSource.getAllEntries { entries ->
+                val entriesSorted = entries.sortedBy { it.id }
+                _entriesUI.value = entriesSorted.map { it.toEntryUI() }
+            }
         }
     }
 
@@ -55,9 +56,10 @@ class EntriesViewModel @Inject constructor(
             lastEntryRemoved?.let {
                 val entries = _entriesUI.value?.toMutableList()
                 entries?.add(lastEntryRemoved!!.first, lastEntryRemoved!!.second!!)
-                localDataSource.insertEntry(lastEntryRemoved!!.second!!)
-                lastEntryRemoved = null
-                _entriesUI.value = entries
+                localDataSource.insertEntry(lastEntryRemoved!!.second!!) {
+                    lastEntryRemoved = null
+                    _entriesUI.value = entries
+                }
             }
             isRestoring = false
         }
@@ -76,7 +78,7 @@ class EntriesViewModel @Inject constructor(
         disableEntry?.let { entry ->
             localDataSource.updateEntry(entry)
             entry.isDisabled = !entry.isDisabled
-            _entriesUI.value = _entriesUI.value?.apply { get(position).also { it.isDisabled = disableEntry.isDisabled} }
+            _entriesUI.value = _entriesUI.value?.apply { get(position).also { it.isDisabled = disableEntry.isDisabled } }
         }
     }
 
